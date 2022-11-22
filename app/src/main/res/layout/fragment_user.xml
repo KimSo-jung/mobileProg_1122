@@ -10,14 +10,14 @@
         android:layout_height="100dp">
         <ImageView
             android:id="@+id/account_iv_profile"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:src="@drawable/ic_account"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
         <Button
             android:id="@+id/account_btn_follow_signout"
             android:text="@string/follow"
-            android:layout_toRightOf="@+id/account_iv_profile"
+            android:layout_toEndOf="@+id/account_iv_profile"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
@@ -25,8 +25,9 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/account_iv_profile"
-            android:layout_above="@id/account_btn_follow_signout">
+            android:layout_toEndOf="@id/account_iv_profile"
+            android:layout_above="@id/account_btn_follow_signout"
+            android:baselineAligned="false">
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_gravity="center"

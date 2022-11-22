@@ -78,15 +78,15 @@ class DetailViewFragment : Fragment(){
 
             Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).into(viewholder.detailviewitem_profile_image)
 
-            viewholder.detailviewitem_favorite_imageview.setOnClickListener{
+            viewholder.detailviewitem_favorite_image.setOnClickListener{
                 favoriteEvent(p1)
             }
 
             if(contentDTOs[p1].favorites.containsKey(uid)){
                 //좋아요 누름
-                viewholder.detailviewitem_favorite_imageview.setImageResource(R.drawable.ic_favorite)
+                viewholder.detailviewitem_favorite_image.setImageResource(R.drawable.ic_favorite)
             }else{
-                viewholder.detailviewitem_favorite_imageview.setImageResource(R.drawable.ic_favorite_border)
+                viewholder.detailviewitem_favorite_image.setImageResource(R.drawable.ic_favorite_border)
             }
 
             viewholder.detailviewitem_profile_image.setOnClickListener{
@@ -97,7 +97,7 @@ class DetailViewFragment : Fragment(){
                 fragment.arguments = bundle
                 activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.main_content,fragment)?.commit()
             }
-            viewholder.detailviewitem_comment_imageview.setOnClickListener { v ->
+            viewholder.detailviewitem_comment_image.setOnClickListener { v ->
                 var intent = Intent(v.context,CommentActivity::class.java)
                 intent.putExtra("contentUid",contentUidList[p1])
                 intent.putExtra("destinationUid", contentDTOs[p1].uid)

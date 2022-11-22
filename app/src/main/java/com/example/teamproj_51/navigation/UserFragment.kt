@@ -63,19 +63,19 @@ class UserFragment : Fragment(){
             }
             mainActivity?.toolbar_title_image?.visibility = View.GONE
             mainActivity?.toolbar_username?.visibility = View.VISIBLE
-            mainActivity?.toolbar_btn_back.visibility = View.VISIBLE
+            mainActivity?.toolbar_btn_back?.visibility = View.VISIBLE
             fragmentView?.account_btn_follow_signout?.setOnClickListener{
                 requestFollow()
             }
         }
 
         fragmentView?.account_recyclerview?.adapter = UserFragmentRecyclerViewAdapter()
-        fragmentView?.account_recyclerview?.layoutManager = GridLayoutManager(activity!!,3)
+        fragmentView?.account_recyclerview?.layoutManager = GridLayoutManager(requireActivity(),3)
 
         fragmentView?.account_iv_profile?.setOnClickListener{
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.type = "image/*"
-            activity?.startActivityFromResult(photoPickerIntent, PICK_PROFILE_FROM_ALBUM)
+            activity?.startActivityForResult(photoPickerIntent, PICK_PROFILE_FROM_ALBUM)
         }
         getProfileImage()
         getFollowerAndFollowing()
@@ -91,10 +91,10 @@ class UserFragment : Fragment(){
             }
             if(followDTO?.followerCount != null){
                 fragmentView?.account_tv_follower_count?.text = followDTO?.followerCount?.toString()
-                if (followDTO?.followers?.containsKey(currentUserUid!!)){
+                if (followDTO?.followers?.containsKey(currentUserUid!!) == true){
                     fragmentView?.account_btn_follow_signout?.text = getString(R.string.follow_cancel)
                     fragmentView?.account_btn_follow_signout?.background?.setColorFilter(
-                        ContextCompat.getColor(activity!!,R.color.colorLightGray),
+                        ContextCompat.getColor(requireActivity(),R.color.colorLightGray),
                         PorterDuff.Mode.MULTIPLY)
                 }else{
                     if(uid!=currentUserUid){
